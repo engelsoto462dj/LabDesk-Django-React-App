@@ -1,0 +1,20 @@
+# Python & Django
+.venv/
+*/.venv/
+__pycache__/
+*/__pycache__/
+*.pyc
+*.sqlite3
+.env
+
+# Node & Frontend
+node_modules/
+*/node_modules/
+dist/
+*/dist/
+.DS_Store
+
+# Repositorios y copias auxiliares
+taste-skill/
+LabDesk_FullStack/
+test_excel.csv

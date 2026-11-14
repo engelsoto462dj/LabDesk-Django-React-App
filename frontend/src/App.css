@@ -1,0 +1,1063 @@
+/* ==============================================================================
+   SENATI - LabDesk: Sistema de Gestión de Incidencias
+   Estilo: Apple Design System (macOS / iOS HIG) adaptado a Laboratorio SENATI
+   ============================================================================== */
+
+:root {
+  --apple-bg: #f5f5f7;
+  --apple-surface: #ffffff;
+  --apple-surface-translucent: rgba(255, 255, 255, 0.82);
+  --apple-card-border: rgba(0, 0, 0, 0.08);
+  --apple-text-primary: #1d1d1f;
+  --apple-text-secondary: #86868b;
+  --apple-text-tertiary: #a1a1a6;
+  
+  /* Apple System Colors */
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-active: #0062c4;
+  --apple-blue-subtle: rgba(0, 113, 227, 0.1);
+  
+  --apple-green: #34c759;
+  --apple-green-subtle: rgba(52, 199, 89, 0.12);
+  --apple-green-text: #248a3d;
+  
+  --apple-orange: #ff9500;
+  --apple-orange-subtle: rgba(255, 149, 0, 0.12);
+  --apple-orange-text: #b26a00;
+  
+  --apple-red: #ff3b30;
+  --apple-red-subtle: rgba(255, 59, 48, 0.12);
+  --apple-red-text: #c92a2a;
+  
+  --apple-purple: #5856d6;
+  --apple-purple-subtle: rgba(88, 86, 214, 0.12);
+
+  --apple-radius-sm: 8px;
+  --apple-radius-md: 12px;
+  --apple-radius-lg: 16px;
+  --apple-radius-pill: 980px;
+
+  --apple-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --apple-shadow-card: 0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --apple-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --apple-shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-stack);
+  background-color: var(--apple-bg);
+  color: var(--apple-text-primary);
+  line-height: 1.47059;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ==============================================================================
+   TOAST NOTIFICATION (Estilo iOS Dynamic Island / macOS Notification)
+   ============================================================================== */
+.apple-toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(30, 30, 32, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #ffffff;
+  border-radius: var(--apple-radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--apple-green);
+}
+
+.apple-toast.error .toast-dot {
+  background-color: var(--apple-red);
+}
+
+.apple-toast.aviso .toast-dot {
+  background-color: var(--apple-orange);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -15px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* ==============================================================================
+   BARRA DE NAVEGACIÓN (macOS Safari Frosted Glass Header)
+   ============================================================================== */
+.apple-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--apple-surface-translucent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--apple-card-border);
+}
+
+.navbar-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apple-logo-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0071e3 0%, #0051a8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.35);
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--apple-text-primary);
+}
+
+.brand-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: var(--apple-radius-pill);
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--apple-text-secondary);
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: var(--apple-text-secondary);
+  font-weight: 400;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  background: var(--apple-green-subtle);
+  border: 1px solid rgba(52, 199, 89, 0.25);
+  border-radius: var(--apple-radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--apple-green-text);
+}
+
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--apple-green);
+  box-shadow: 0 0 0 2px rgba(52, 199, 89, 0.3);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* ==============================================================================
+   BOTONES ESTILO APPLE
+   ============================================================================== */
+.apple-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--apple-radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  white-space: nowrap;
+}
+
+.apple-button.primary {
+  background: var(--apple-blue);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 113, 227, 0.25);
+}
+
+.apple-button.primary:hover {
+  background: var(--apple-blue-hover);
+  transform: translateY(-0.5px);
+  box-shadow: 0 3px 8px rgba(0, 113, 227, 0.35);
+}
+
+.apple-button.primary:active {
+  background: var(--apple-blue-active);
+  transform: scale(0.98);
+}
+
+.apple-button.secondary {
+  background: #ffffff;
+  color: var(--apple-text-primary);
+  border: 1px solid var(--apple-card-border);
+  box-shadow: var(--apple-shadow-subtle);
+}
+
+.apple-button.secondary:hover {
+  background: #fbfbfd;
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.5px);
+}
+
+.apple-button.secondary:active {
+  background: #f0f0f2;
+  transform: scale(0.98);
+}
+
+/* ==============================================================================
+   CONTENIDO PRINCIPAL
+   ============================================================================== */
+.apple-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Banner de alerta */
+.apple-alert-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  background: #fff2f2;
+  border: 1px solid rgba(255, 59, 48, 0.25);
+  border-radius: var(--apple-radius-md);
+  color: var(--apple-red-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.apple-alert-banner .retry-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--apple-red-text);
+  color: var(--apple-red-text);
+  padding: 4px 10px;
+  border-radius: var(--apple-radius-pill);
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ==============================================================================
+   TARJETAS KPI (Dashboard de Estadísticas Apple)
+   ============================================================================== */
+.apple-kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.apple-kpi-card {
+  background: var(--apple-surface);
+  border: 1px solid var(--apple-card-border);
+  border-radius: var(--apple-radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--apple-shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.apple-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-hover);
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--apple-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpi-badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.dot-yellow { background-color: #ffd60a; }
+.dot-orange { background-color: var(--apple-orange); }
+.dot-green { background-color: var(--apple-green); }
+.dot-red { background-color: var(--apple-red); }
+
+.kpi-icon.total-icon {
+  color: var(--apple-blue);
+}
+
+.kpi-value {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--apple-text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.kpi-footer {
+  font-size: 11px;
+  color: var(--apple-text-tertiary);
+  font-weight: 500;
+}
+
+/* ==============================================================================
+   BARRA DE HERRAMIENTAS: SEGMENTED CONTROL + FILTROS
+   ============================================================================== */
+.apple-toolbar {
+  background: var(--apple-surface);
+  border: 1px solid var(--apple-card-border);
+  border-radius: var(--apple-radius-lg);
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  box-shadow: var(--apple-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Segmented Control iOS/macOS */
+.segmented-control {
+  display: inline-flex;
+  background: #ebebee;
+  padding: 3px;
+  border-radius: 10px;
+  align-self: flex-start;
+  gap: 2px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.segmented-tab {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--apple-text-secondary);
+  cursor: pointer;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.segmented-tab:hover {
+  color: var(--apple-text-primary);
+}
+
+.segmented-tab.active {
+  background: #ffffff;
+  color: var(--apple-text-primary);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.tab-count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: var(--apple-radius-pill);
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.segmented-tab.active .tab-count {
+  background: var(--apple-blue-subtle);
+  color: var(--apple-blue);
+}
+
+/* Filtros y búsqueda */
+.filters-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--apple-text-tertiary);
+  pointer-events: none;
+}
+
+.apple-input.search-field {
+  width: 100%;
+  padding-left: 36px;
+  padding-right: 32px;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--apple-text-tertiary);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+}
+
+.clear-search-btn:hover {
+  color: var(--apple-text-primary);
+}
+
+.filter-selects {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apple-input,
+.apple-select,
+.apple-textarea {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--apple-radius-sm);
+  padding: 9px 13px;
+  color: var(--apple-text-primary);
+  font-size: 13px;
+  transition: all 0.16s ease;
+  outline: none;
+}
+
+.apple-input:focus,
+.apple-select:focus,
+.apple-textarea:focus {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.16);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.apple-select {
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+/* ==============================================================================
+   CABECERA DEL LISTADO
+   ============================================================================== */
+.list-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding: 0 4px;
+}
+
+.list-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.list-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--apple-text-primary);
+}
+
+.results-badge {
+  font-size: 12px;
+  color: var(--apple-text-secondary);
+  font-weight: 500;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: 1px solid var(--apple-card-border);
+  padding: 6px 12px;
+  border-radius: var(--apple-radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--apple-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #ffffff;
+  color: var(--apple-text-primary);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==============================================================================
+   TARJETAS DE INCIDENCIAS (Incident Cards)
+   ============================================================================== */
+.incidents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+.apple-card.incident-card {
+  background: var(--apple-surface);
+  border: 1px solid var(--apple-card-border);
+  border-radius: var(--apple-radius-lg);
+  padding: 20px;
+  box-shadow: var(--apple-shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.apple-card.incident-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-hover);
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+/* Borde sutil según estado */
+.apple-card.incident-card.estado-resuelto {
+  border-left: 3px solid var(--apple-green);
+}
+.apple-card.incident-card.estado-en_proceso {
+  border-left: 3px solid var(--apple-orange);
+}
+.apple-card.incident-card.estado-pendiente {
+  border-left: 3px solid #ffd60a;
+}
+
+.card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--apple-radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Prioridades */
+.prioridad-alta {
+  background: var(--apple-red-subtle);
+  color: var(--apple-red-text);
+}
+.prioridad-alta .pill-dot { background-color: var(--apple-red); }
+
+.prioridad-media {
+  background: var(--apple-orange-subtle);
+  color: var(--apple-orange-text);
+}
+.prioridad-media .pill-dot { background-color: var(--apple-orange); }
+
+.prioridad-baja {
+  background: var(--apple-green-subtle);
+  color: var(--apple-green-text);
+}
+.prioridad-baja .pill-dot { background-color: var(--apple-green); }
+
+/* Categorías */
+.categoria-hardware, .categoria-software, .categoria-red {
+  background: #f0f0f4;
+  color: #4b4b50;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.aula-badge {
+  background: var(--apple-blue-subtle);
+  color: var(--apple-blue);
+  font-weight: 600;
+  text-transform: none;
+}
+
+.incident-id {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--apple-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.incident-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--apple-text-primary);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.incident-desc {
+  font-size: 13px;
+  color: #555558;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.incident-meta-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.meta-fecha {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--apple-text-tertiary);
+}
+
+/* Dropdown de Estado */
+.estado-dropdown {
+  padding: 4px 10px;
+  border-radius: var(--apple-radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.estado-dropdown.pendiente {
+  background: #fff9db;
+  color: #8f6b00;
+  border-color: #ffe066;
+}
+
+.estado-dropdown.en_proceso {
+  background: var(--apple-orange-subtle);
+  color: var(--apple-orange-text);
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+.estado-dropdown.resuelto {
+  background: var(--apple-green-subtle);
+  color: var(--apple-green-text);
+  border-color: rgba(52, 199, 89, 0.3);
+}
+
+.card-actions-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin-bottom: 12px;
+}
+
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--apple-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.15s ease;
+}
+
+.card-action-btn.edit {
+  color: var(--apple-blue);
+  background: var(--apple-blue-subtle);
+}
+
+.card-action-btn.edit:hover {
+  background: rgba(0, 113, 227, 0.18);
+}
+
+.card-action-btn.delete {
+  color: var(--apple-red-text);
+  background: var(--apple-red-subtle);
+}
+
+.card-action-btn.delete:hover {
+  background: rgba(255, 59, 48, 0.2);
+}
+
+/* ==============================================================================
+   ESTADO VACÍO (Empty State)
+   ============================================================================== */
+.apple-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--apple-surface);
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  border-radius: var(--apple-radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f0f0f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apple-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.apple-empty-state h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--apple-text-primary);
+}
+
+.apple-empty-state p {
+  color: var(--apple-text-secondary);
+  font-size: 13px;
+  max-width: 400px;
+}
+
+/* ==============================================================================
+   MODAL / HOJA DIÁLOGO ESTILO APPLE
+   ============================================================================== */
+.apple-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: backdropFade 0.2s ease-out;
+}
+
+.apple-modal-window {
+  background: #ffffff;
+  border-radius: var(--apple-radius-lg);
+  box-shadow: var(--apple-shadow-modal);
+  width: 100%;
+  max-width: 560px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--apple-blue);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--apple-text-primary);
+  letter-spacing: -0.015em;
+}
+
+.modal-close-btn {
+  background: #f0f0f3;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apple-text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  background: #e2e2e6;
+  color: var(--apple-text-primary);
+}
+
+.apple-modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--apple-text-primary);
+}
+
+.req {
+  color: var(--apple-red);
+}
+
+.form-row-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.modal-actions-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ==============================================================================
+   PIE DE PÁGINA (Footer Institucional SENATI)
+   ============================================================================== */
+.apple-footer {
+  margin-top: 40px;
+  padding: 28px 24px 36px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: var(--apple-text-secondary);
+}
+
+.footer-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-credits {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer-credits strong {
+  color: var(--apple-text-primary);
+}
+
+.footer-details {
+  font-size: 11px;
+  color: var(--apple-text-tertiary);
+}
+
+/* ==============================================================================
+   RESPONSIVE DESIGN (Media Queries)
+   ============================================================================== */
+@media (max-width: 1024px) {
+  .apple-kpis-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .apple-kpis-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters-row {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-selects {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .select-wrapper {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .apple-select {
+    width: 100%;
+  }
+
+  .form-row-three {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-container {
+    padding: 10px 16px;
+  }
+
+  .export-btn span {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .apple-kpis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .incidents-grid {
+    grid-template-columns: 1fr;
+  }
+}
