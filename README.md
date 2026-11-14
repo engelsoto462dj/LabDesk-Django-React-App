@@ -1,8 +1,8 @@
 # LabDesk - Sistema de Gestion de Incidencias
-> **SENATI - Direccion Zonal Lima - Callao**  
+> **SENATI - Direccion Zonal IQUITOS - LORETO**  
 > **Escuela de Tecnologias de la Informacion (ETI)**  
-> **Carrera:** Desarrollo de Software  
-> **Semestre:** V - Taller Practico Full Stack
+> **Carrera:** INGENIERIA de Software  
+> **Semestre:** V 
 
 Sistema web Full Stack desarrollado para el registro, seguimiento y resolucion de incidencias tecnicas en los laboratorios de computo del SENATI (Sede Central / CFP Lima Norte). Disenado con interfaz limpia y minimalista, optimizado para velocidad, claridad visual y experiencia de usuario.
 
